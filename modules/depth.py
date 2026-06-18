@@ -1,3 +1,6 @@
+from modules.config import cfg
+from modules.utils import ensure_folder
+
 from transformers import pipeline
 from PIL import Image
 import numpy as np
