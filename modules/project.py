@@ -1,4 +1,4 @@
-from dataclasses import dataclass
+from dataclasses import dataclass, field
 from PIL import Image
 import numpy as np
 
@@ -6,34 +6,28 @@ import numpy as np
 @dataclass
 class Project:
 
-    # Percorso immagine
-    image_path: str = ""
+    image_path: str
 
-    # Immagine originale
     original: Image.Image = None
-
-    # Versione numpy
     original_np: np.ndarray = None
-
-    # Output pipeline
-    restored = None
-    background = None
 
     depth = None
     depth16 = None
-
     normal = None
-
     hyperdepth = None
 
-    displacement = None
+    restored = None
+    background = None
 
-    report = {}
+    report: dict = field(default_factory=dict)
 
     def load_image(self):
 
         self.original = Image.open(self.image_path).convert("RGB")
-
         self.original_np = np.array(self.original)
 
-        print("✅ Immagine caricata")
+        self.report["image"] = self.image_path
+        self.report["width"] = self.original.width
+        self.report["height"] = self.original.height
+
+        print(f"✅ Immagine caricata ({self.original.width}x{self.original.height})")
