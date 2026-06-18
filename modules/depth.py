@@ -32,11 +32,16 @@ class DepthEngine:
 
         return depth
 
-    def save(self, depth, output_path="outputs/depth.png"):
+    def save(self, depth, output_path=None):
 
-        depth.save(output_path)
+    ensure_folder(cfg.OUTPUT_FOLDER)
 
-        print(f"✅ Salvata: {output_path}")
+    if output_path is None:
+        output_path = f"{cfg.OUTPUT_FOLDER}/depth.png"
+
+    depth.save(output_path)
+
+    print(f"✅ Salvata: {output_path}")
 
     def generate_depth16(self, depth):
 
