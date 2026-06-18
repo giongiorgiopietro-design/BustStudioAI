@@ -55,8 +55,13 @@ class DepthEngine:
 
         return depth16
 
-    def save_depth16(self, depth16, output_path="outputs/depth16.png"):
+    def save_depth16(self, depth16, output_path=None):
 
-        Image.fromarray(depth16).save(output_path)
+    ensure_folder(cfg.OUTPUT_FOLDER)
 
-        print(f"✅ Salvata: {output_path}")
+    if output_path is None:
+        output_path = f"{cfg.OUTPUT_FOLDER}/depth16.png"
+
+    Image.fromarray(depth16).save(output_path)
+
+    print(f"✅ Salvata: {output_path}")
