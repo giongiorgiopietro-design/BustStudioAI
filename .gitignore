@@ -1,1 +1,10 @@
+__pycache__/
+*.pyc
 
+outputs/*
+!outputs/.gitkeep
+
+tests/output/*
+.ipynb_checkpoints/
+
+.env
