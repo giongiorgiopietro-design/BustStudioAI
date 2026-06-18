@@ -19,8 +19,11 @@ def main():
     hyper = HyperDepthEngine()
     hyper.run(project)
 
-    print("\n✅ Elaborazione completata!")
-    print("File salvati nella cartella outputs/")
+    print("\n==============================")
+    print(" BustStudioAI")
+    print("==============================")
+    print("✅ Pipeline completata")
+    print("📁 File salvati in outputs/")
 
 
 if __name__ == "__main__":
